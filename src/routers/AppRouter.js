@@ -12,7 +12,7 @@ export const AppRouter = () => {
     <BrowserRouter>
       <div className="container mt-3">
         <Routes>
-          <Route path="/login" element={!estaLogueado ?  <Login /> : <Navigate toy='/'/>} />
+          <Route path="/login" element={!estaLogueado ?  <Login /> : <Navigate to='/todos'/>} />
           <Route path="/*" element={estaLogueado ? <DashboardRouter />:<Navigate to='/login' />} />
         </Routes>
       </div>
