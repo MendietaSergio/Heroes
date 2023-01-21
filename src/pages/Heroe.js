@@ -3,7 +3,7 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { getHeroeById } from "../selectors/getHeroeById";
 
 export const Heroe = () => {
-  const { heroeID } = useParams(); //revuelve los parametos :id
+  const { heroeID } = useParams(); 
   const navigate = useNavigate();
   const heroe = useMemo(() => getHeroeById(heroeID), [heroeID])
   if(!heroe){
