@@ -13,7 +13,6 @@ function App() {
   const [user, dispatch] = useReducer(AuthReducer, {}, init);
 
   useEffect(() => {
-    //cuando user cambie, se cambia el estado user en localstorage
     localStorage.setItem("user", JSON.stringify(user, null, 3));
   }, [user]);
   return (
@@ -23,7 +22,7 @@ function App() {
         dispatch,
       }}
     >
-      <div className="container">
+      <div className={`container ${user.logueado ? "":"login"} `}>
         <AppRouter />
       </div>
     </AuthContext.Provider>
