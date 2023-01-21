@@ -1,14 +1,12 @@
 import React from "react";
 
 import { HeroeList } from "../components/HeroeList";
-export const Marvel = () => {
+export const Filter = ({params}) => {
   return (
     <div>
-      <h1>Marvel</h1>
+      <h1>{params}</h1>
       <hr />
-
-      <HeroeList publisher="Marvel Comics" />
-
+      <HeroeList publisher={params} />
       <hr />
     </div>
   );
