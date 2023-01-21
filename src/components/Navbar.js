@@ -3,25 +3,24 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
 import { types } from "../types";
 export const Navbar = () => {
-  
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const {user, dispatch}=  useContext(AuthContext)
-  const { name} = user;
+  const { user, dispatch } = useContext(AuthContext);
+  const { name } = user;
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     dispatch({
-      type : types.logout,
-      payload : null
-    })
-    navigate('/login')
-  }
+      type: types.logout,
+      payload: null,
+    });
+    navigate("/login");
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            Navbar
+          <Link className="navbar-brand" to="/todos">
+            Todos
           </Link>
           <button
             className="navbar-toggler"
@@ -34,9 +33,14 @@ const navigate = useNavigate()
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="collapse navbar-collapse view-menu" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <NavLink className="nav-link" aria-current="page" to="/marvel" activeclassname="active">
+              <NavLink
+                className="nav-link"
+                aria-current="page"
+                to="/marvel"
+                activeclassname="active"
+              >
                 Marvel
               </NavLink>
               <NavLink className="nav-link" to="/dc">
@@ -46,22 +50,19 @@ const navigate = useNavigate()
                 Buscador
               </NavLink>
             </div>
+            <div className="container-sesion">
+              <div className="text-name">
+              <p className="nav-item nav-link text-info mb-0">{name}</p>
+              </ div>
+              <button
+                className="nav-item nav-link border-0 bg-transparent pe-auto"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
-        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ms-auto">
-                    <p className="nav-item nav-link text-info mb-0">
-                        {name}
-                    </p>
-                    <button
-                        className="nav-item nav-link border-0 bg-transparent"
-                        onClick={handleLogout}
-                    >
-                        Logout
-                    </button>
-                </ul>
-            </div>
-
       </nav>
     </div>
   );
